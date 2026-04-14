@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>ARTH | Interaction Edition</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@700&family=Cairo:wght@400;700;900&display=swap');
+
+        :root {
+            --bright-gold: #f1d592; 
+            --gold-gradient: linear-gradient(90deg, #c5a059, #f1d592, #c5a059);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background: url('bk2.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .snowflake {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.6;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10vh); }
+            100% { transform: translateY(110vh); }
+        }
+
+        .card-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            padding: 2.5px;
+            background: var(--gold-gradient);
+            background-size: 00% auto;
+            border-radius: 35px;
+            animation: borderShine 4s linear infinite;
+            z-index: 10;
+        }
+
+        @keyframes borderShine {
+            to { background-position: 200% center; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.01); 
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border-radius: 33px;
+            padding: 35px 20px;
+            text-align: center;
+            width: 100%;
+        }
+
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid var(--bright-gold);
+            margin: 0 auto 12px;
+            display: block;
+            object-fit: cover;
+        }
+
+        h1 {
+            font-family: 'Aref Ruqaa', serif;
+            font-size: 3.2rem;
+            color: var(--bright-gold);
+            margin-bottom: 5px;
+        }
+
+        .bio-info h2 {
+            font-size: 1.1rem;
+            color: var(--bright-gold);
+            font-weight: 800;
+        }
+
+        .bio-info p {
+            font-size: 0.85rem;
+            color: #ffffff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+        }
+
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        /* هنا حركة التكبير عند اللمس */
+        .link-btn {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(241, 213, 146, 0.3);
+            border-radius: 12px;
+            padding: 14px 18px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 700;
+            font-size: 0.95rem;
+            transform: scale(1);
+        }
+
+        .link-btn:active, .link-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--bright-gold);
+            transform: scale(1.05); /* يكبر بنسبة 5% */
+            box-shadow: 0 5px 15px rgba(241, 213, 146, 0.1);
+        }
+
+        .link-btn i {
+            font-size: 1.2rem;
+            color: var(--bright-gold);
+        }
+
+        .store-section {
+            border-top: 1px solid rgba(241, 213, 146, 0.3);
+            padding-top: 15px;
+        }
+
+        .store-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--bright-gold);
+            color: var(--bright-gold);
+            padding: 10px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 900;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .footer-text {
+            margin-top: 15px;
+            font-size: 9px;
+            color: var(--bright-gold);
+            font-weight: 800;
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 2.8rem !important; }
+            .card-wrapper { max-width: 92%; }
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        function createSnow() {
+            const snow = document.createElement('div');
+            snow.classList.add('snowflake');
+            snow.style.left = Math.random() * 100 + 'vw';
+            snow.style.opacity = Math.random();
+            snow.style.width = snow.style.height = Math.random() * 3 + 2 + 'px';
+            snow.style.animationDuration = Math.random() * 2 + 4 + 's';
+            document.body.appendChild(snow);
+            setTimeout(() => snow.remove(), 6000);
+        }
+        setInterval(createSnow, 200);
+    </script>
+
+    <div class="card-wrapper">
+        <div class="glass-card">
+            <img src="arth.png" alt="Profile" class="profile-img">
+
+            <h1>ARTH</h1>
+            
+            <div class="bio-info">
+                <h2>ارث</h2>
+                <p>مطور وصانع محتوى لينكس</p>
+            </div>
+
+            <div class="links-container">
+                <a href="https://youtube.com/@arth-youtube?si=_ardNkbXDr6yCFnJ" class="link-btn" target="_blank">
+                    <span>يوتيوب | YouTube</span>
+                    <i class="fab fa-youtube"></i>
+                </a>
+                
+                <a href="https://www.tiktok.com/@_l6t2?_r=1&_t=ZS-95WcKz5a3Uq" class="link-btn" target="_blank">
+                    <span>تيك توك | TikTok</span>
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                
+                <a href="https://discord.gg/EgS5tasD2" class="link-btn" target="_blank">
+                    <span>ديسكورد | Discord</span>
+                    <i class="fab fa-discord"></i>
+                </a>
+            </div>
+
+            <div class="store-section">
+                <div class="store-btn">
+                    المتجر قيد الصيانة <i class="fas fa-tools"></i>
+                </div>
+            </div>
+
+            <div class="footer-text">
+                ARTH  
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
